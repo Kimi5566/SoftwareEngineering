@@ -2,6 +2,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QDialog, QLabel
 from main_controller import *
+from forget_controller import *
+from developer_controller import *
 from Sqlite import *
 from UI_login import *
 import sys
@@ -17,6 +19,8 @@ class Login_controller(QMainWindow):
 
     def setup_control(self):
         self.ui.btn_login.clicked.connect(self.display_MainForm)
+        self.ui.btn_reset.clicked.connect(self.forget_MainForm)
+        self.ui.btn_developer.clicked.connect(self.developer_MainForm)
 
     def display_MainForm(self):
         if self.verify_login_info():
@@ -36,3 +40,14 @@ class Login_controller(QMainWindow):
             return True
         else:
             return False
+   
+
+    def forget_MainForm(self):
+            # self.close()
+            self.main = forget_controller()
+            self.main.show()
+    
+    def developer_MainForm(self):
+            self.main = developer_controller()
+            self.main.show()
+
